@@ -42,9 +42,9 @@ const displayBookDetails = data => {
                     <div class="row d-flex align-items-center">
                         <div class="col-md-8">
                             <h3>${book.title}</h3>
-                            <p><span class="fw-bold">Author:</span> ${book.author_name[0] ? book.author_name[0] : 'N/A'}</p>
-                            <p><span class="fw-bold">Publisher:</span> ${book.publisher[0] ? book.publisher[0] : 'N/A'}</p>
-                            <p><span class="fw-bold">First Published Year</span> ${book.first_publish_year ? book.first_publish_year : 'N/A'}</p>
+                            <p><span class="fw-bold">Author:</span> ${book.author_name?.[0] ? book.author_name[0] : 'Not Available'}</p>
+                            <p><span class="fw-bold">Publisher:</span> ${book.publisher?.[0] ? book.publisher[0] : 'Not Available'}</p>
+                            <p><span class="fw-bold">First Published Year</span> ${book.first_publish_year ? book.first_publish_year : 'Not Available'}</p>
                         </div>
                         <div class="col-md-4 d-flex justify-content-end">
                             <img class="img-fluid" src="https://covers.openlibrary.org/b/id/${book.cover_i ? book.cover_i : 10909258}-M.jpg" alt="">
