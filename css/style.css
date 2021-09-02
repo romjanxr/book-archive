@@ -16,3 +16,7 @@ body {
 .span-2 {
     grid-column: 1 / span 2;
 }
+
+.book {
+    border-radius: 10px;
+}

@@ -38,20 +38,20 @@ const displayBookDetails = data => {
         books.forEach(book => {
             const div = document.createElement('div');
             div.innerHTML = `
-        <div class="bg-white px-5 py-3 rounded-3">
-            <div class="row d-flex align-items-center">
-                <div class="col-md-9">
-                    <h3>${book.title}</h3>
-                    <p><span class="fw-bold">Author:</span> ${book.author_name[0]}</p>
-                    <p><span class="fw-bold">Publisher:</span> ${book.publisher[0]}</p>
-                    <p><span class="fw-bold">First Published Year</span> ${book.first_publish_year}</p>
+                <div class="bg-white p-3 book">
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-8">
+                            <h3>${book.title}</h3>
+                            <p><span class="fw-bold">Author:</span> ${book.author_name[0] ? book.author_name[0] : 'N/A'}</p>
+                            <p><span class="fw-bold">Publisher:</span> ${book.publisher[0] ? book.publisher[0] : 'N/A'}</p>
+                            <p><span class="fw-bold">First Published Year</span> ${book.first_publish_year ? book.first_publish_year : 'N/A'}</p>
+                        </div>
+                        <div class="col-md-4 d-flex justify-content-end">
+                            <img class="img-fluid" src="https://covers.openlibrary.org/b/id/${book.cover_i ? book.cover_i : 10909258}-M.jpg" alt="">
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3 d-flex justify-content-end">
-                    <img class="w-75" src="https://covers.openlibrary.org/b/id/${book.cover_i ? book.cover_i : 10909258}-M.jpg" alt="">
-                </div>
-            </div>
-        </div>
-        `
+                `
             bookContainer.appendChild(div);
             document.getElementById('no-result').style.display = 'none';
         })
