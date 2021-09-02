@@ -20,20 +20,25 @@ const displayBookDetails = data => {
 
     bookContainer.textContent = '';
 
-    // result found
+    if (data.numFound === 0) {
+        document.getElementById('no-result').style.display = 'block';
+    }
+    else {
 
-    const resultDiv = document.createElement('div');
-    resultDiv.classList.add('mb-3');
-    resultDiv.innerHTML = `<h3>${data.numFound} result found</h3>`
-    bookContainer.appendChild(resultDiv);
+        // result found
 
-    // books display
+        const resultDiv = document.createElement('div');
+        resultDiv.classList.add('span-2');
+        resultDiv.innerHTML = `<h3>${data.numFound} result found</h3>`
+        bookContainer.appendChild(resultDiv);
 
-    const books = (data.docs).slice(0, 30);
-    books.forEach(book => {
-        const div = document.createElement('div');
-        div.innerHTML = `
-        <div class="bg-white px-5 py-3 rounded-3 mb-3">
+        // books display
+
+        const books = (data.docs).slice(0, 30);
+        books.forEach(book => {
+            const div = document.createElement('div');
+            div.innerHTML = `
+        <div class="bg-white px-5 py-3 rounded-3">
             <div class="row d-flex align-items-center">
                 <div class="col-md-9">
                     <h3>${book.title}</h3>
@@ -42,11 +47,13 @@ const displayBookDetails = data => {
                     <p><span class="fw-bold">First Published Year</span> ${book.first_publish_year}</p>
                 </div>
                 <div class="col-md-3 d-flex justify-content-end">
-                    <img class="w-75" src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" alt="">
+                    <img class="w-75" src="https://covers.openlibrary.org/b/id/${book.cover_i ? book.cover_i : 10909258}-M.jpg" alt="">
                 </div>
             </div>
         </div>
         `
-        bookContainer.appendChild(div);
-    })
+            bookContainer.appendChild(div);
+            document.getElementById('no-result').style.display = 'none';
+        })
+    }
 }
